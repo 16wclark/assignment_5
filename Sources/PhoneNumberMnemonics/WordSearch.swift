@@ -11,7 +11,36 @@ import Foundation
 // possible letters that could be in place of that character
 // For instance, 234 becomes [["A", "B", "C"], ["D", "E", "F"], ["G", "H", "I"]]
 public func letters(for phoneNumber: String) -> [[String]] {
-    // YOU FILL IN HERE
+    var letters = [[String]]()
+    var i = phoneNumber.count;
+    var j = 0
+    let letterSwap = phoneNumber.map {
+       if j < i {
+         j = j + 1
+         switch toLetters {
+             case 1:
+             case 2:
+             letters.append(["A", "B", "C"])
+             case 3:
+             letters.append(["D", "E", "F"])
+             case 4:
+             letters.append(["G", "H", "I"])   
+             case 5:
+             letters.append(["J", "K", "L"])
+             case 6:
+             letters.append(["M", "N", "O"])
+             case 7:
+             letters.append(["P", "Q", "R", "S"])
+             case 8:
+             letters.append(["T", "U", "V"])
+             case 9:
+             letters.append(["W", "X", "Y", "Z"])
+             case 0:
+             default:
+         }
+       }
+    }
+    return letters
 }
 
 // Finds all of the ordered permutations of a given
