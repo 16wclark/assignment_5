@@ -58,14 +58,17 @@ public func possibles(for phoneNumber: String) -> [String] {
 // Returns all of the words in a given *string* from the wordlist.txt file
 // using only words in the word list of minimum length ofMinLength
 public func wordsInString(_ string: String, ofMinLength length: UInt) -> [String] {
-    return string.filter { $0.count == length}
+    return readFromFile("words.txt").filter {   
+           return string.contains($0) && $0.count >= length
+    }
 }
 
 // Returns all possibles strings of characters that a phone number
 // can potentially represent that contain words in words.txt
 // greater than or equal to ofMinLength characters
 public func possiblesWithWholeWords(ofMinLength length: UInt, for phoneNumber: String) -> [String] {
-    
+    return readFromFile("words.txt").filter {
+           return string.filter { $0.contains 
 }
 
 // Returns the phone number mnemonics that have the most words present in words.txt
