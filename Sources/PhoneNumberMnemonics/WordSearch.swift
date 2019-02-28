@@ -46,7 +46,6 @@ public func letters(for phoneNumber: String) -> [[String]] {
 // ["acd", "ace" "bcd", "bce"]
 public func permutations(of arrays: [[String]]) -> [String] {
     // YOU FILL IN HERE
-    //Reduce then flatmap then map (3 lines of code)
 }
 
 // Finds all of the possible strings of characters that a phone number
@@ -69,7 +68,8 @@ public func wordsInString(_ string: String, ofMinLength length: UInt) -> [String
 // greater than or equal to ofMinLength characters
 public func possiblesWithWholeWords(ofMinLength length: UInt, for phoneNumber: String) -> [String] {
     return readFromFile("words.txt").filter {
-           return string.filter { $0.contains 
+           return phoneNumber.contains($0) && $0.count >= length
+           // not done in progress
 }
 
 // Returns the phone number mnemonics that have the most words present in words.txt
