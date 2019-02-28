@@ -31,7 +31,7 @@ public func letters(for phoneNumber: String) -> [[String]] {
             case "9":
                 letters.append(["W", "X", "Y", "Z"])
             default:
-                letters.append([" "])
+                letters.append([""])
             }
         }
     return letters
