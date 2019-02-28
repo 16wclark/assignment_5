@@ -11,30 +11,30 @@ import Foundation
 // possible letters that could be in place of that character
 // For instance, 234 becomes [["A", "B", "C"], ["D", "E", "F"], ["G", "H", "I"]]
 public func letters(for phoneNumber: String) -> [[String]] {
-    var letters = [[String]]()
-        phoneNumber.map {
+       return phoneNumber.map {
         switch $0 {
+            case "0":
+                return ["0"]
+            case "1":
+                return ["1"]
             case "2":
-                letters.append(["A", "B", "C"])
+                return ["A", "B", "C"]
             case "3":
-                letters.append(["D", "E", "F"])
+                return ["D", "E", "F"]
             case "4":
-                letters.append(["G", "H", "I"])
+                return ["G", "H", "I"]
             case "5":
-                letters.append(["J", "K", "L"])
+                return ["J", "K", "L"]
             case "6":
-                letters.append(["M", "N", "O"])
+                return ["M", "N", "O"]
             case "7":
-                letters.append(["P", "Q", "R", "S"])
+                return ["P", "Q", "R", "S"]
             case "8":
-                letters.append(["T", "U", "V"])
+                return ["T", "U", "V"]
             case "9":
-                letters.append(["W", "X", "Y", "Z"])
-            default:
-                letters.append([""])
+                return ["W", "X", "Y", "Z"]
             }
         }
-    return letters
 }
 
 
