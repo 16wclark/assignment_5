@@ -11,37 +11,32 @@ import Foundation
 // possible letters that could be in place of that character
 // For instance, 234 becomes [["A", "B", "C"], ["D", "E", "F"], ["G", "H", "I"]]
 public func letters(for phoneNumber: String) -> [[String]] {
-    var letters = [[String]]()
-    var i = phoneNumber.count;
-    var j = 0
-    let letterSwap = phoneNumber.map {
-       if j < i {
-         j = j + 1
-         switch toLetters {
-             case 1:
-             case 2:
-             letters.append(["A", "B", "C"])
-             case 3:
-             letters.append(["D", "E", "F"])
-             case 4:
-             letters.append(["G", "H", "I"])   
-             case 5:
-             letters.append(["J", "K", "L"])
-             case 6:
-             letters.append(["M", "N", "O"])
-             case 7:
-             letters.append(["P", "Q", "R", "S"])
-             case 8:
-             letters.append(["T", "U", "V"])
-             case 9:
-             letters.append(["W", "X", "Y", "Z"])
-             case 0:
-             default:
-         }
-       }
-    }
-    return letters
+       return phoneNumber.map {
+        switch $0 {
+            case "0":
+                return ["0"]
+            case "1":
+                return ["1"]
+            case "2":
+                return ["A", "B", "C"]
+            case "3":
+                return ["D", "E", "F"]
+            case "4":
+                return ["G", "H", "I"]
+            case "5":
+                return ["J", "K", "L"]
+            case "6":
+                return ["M", "N", "O"]
+            case "7":
+                return ["P", "Q", "R", "S"]
+            case "8":
+                return ["T", "U", "V"]
+            case "9":
+                return ["W", "X", "Y", "Z"]
+            }
+        }
 }
+
 
 // Finds all of the ordered permutations of a given
 // array of arrays of strings
@@ -57,20 +52,20 @@ public func permutations(of arrays: [[String]]) -> [String] {
 // can potentially represent
 // Uses letters(for:) and permutations(of:) to do this
 public func possibles(for phoneNumber: String) -> [String] {
-    // YOU FILL IN HERE
+   return permutations(of letters(for phoneNumber)) 
 }
 
 // Returns all of the words in a given *string* from the wordlist.txt file
 // using only words in the word list of minimum length ofMinLength
 public func wordsInString(_ string: String, ofMinLength length: UInt) -> [String] {
-    // YOU FILL IN HERE
+    return string.filter { $0.count == length}
 }
 
 // Returns all possibles strings of characters that a phone number
 // can potentially represent that contain words in words.txt
 // greater than or equal to ofMinLength characters
 public func possiblesWithWholeWords(ofMinLength length: UInt, for phoneNumber: String) -> [String] {
-    // YOU FILL IN HERE
+    
 }
 
 // Returns the phone number mnemonics that have the most words present in words.txt
