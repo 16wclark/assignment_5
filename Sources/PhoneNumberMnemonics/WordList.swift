@@ -7,13 +7,18 @@ import Foundation
 // You'll want to create a mechanism here for loading and querying
 // words.txt. It's up to you how you do this. You may consider a struct.
 public func readFromFile() -> [String] {
-    let text = String(contentsOfFile: "words.txt")
-    let lines : [String] = text.components(separatedBy: "\n")
+    var lines : [String] = []
+    do {
+        let text = try String(contentsOfFile: "words.txt")
+        lines = text.components(separatedBy: "\n")
+    } catch _ {
+        print("error")
+    }
     return lines
 }
 
 public func wordsOfLength(length: Int) -> [String] {
     let text = readFromFile()
-    let words = lines.filter { $0.count == length }
+    let words = text.filter { $0.count == length }
     return words
 }
