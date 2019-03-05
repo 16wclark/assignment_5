@@ -52,7 +52,7 @@ public func permutations(of arrays: [[String]]) -> [String] {
 // can potentially represent
 // Uses letters(for:) and permutations(of:) to do this
 public func possibles(for phoneNumber: String) -> [String] {
-    listOfLetters = letters(for: phoneNumber)
+    let listOfLetters = letters(for: phoneNumber)
     return premutations(of: listOfLetters)
 }
 
