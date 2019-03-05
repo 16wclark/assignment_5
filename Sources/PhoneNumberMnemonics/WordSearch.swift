@@ -56,7 +56,7 @@ public func permutations(of arrays: [[String]]) -> [String] {
 public func possibles(for phoneNumber: String) -> [String] {
      let listOfLetters = letters(for: phoneNumber)
     return permutations(of: listOfLetters)
-}v
+}
 
 // Returns all of the words in a given *string* from the wordlist.txt file
 // using only words in the word list of minimum length ofMinLength
