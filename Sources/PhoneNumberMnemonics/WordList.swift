@@ -12,8 +12,8 @@ public func readFromFile() -> [String] {
     return lines
 }
 
-public func wordsOfLength(path: String, length: Int) -> [String] {
-    let text = String(contentsOfFile: path, encoding: NSUTF8StringEncoding, error: nil)
-    let lines : [String] = text.components(separatedBy: "\n")
+public func wordsOfLength(length: Int) -> [String] {
+    let text = readFromFile()
     let words = lines.filter { $0.count == length }
+    return words
 }

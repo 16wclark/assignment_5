@@ -59,7 +59,7 @@ public func possibles(for phoneNumber: String) -> [String] {
 // Returns all of the words in a given *string* from the wordlist.txt file
 // using only words in the word list of minimum length ofMinLength
 public func wordsInString(_ string: String, ofMinLength length: UInt) -> [String] {
-    return readFromFile().filter {   
+    return readFromFile().filter {
            return string.contains($0) && $0.count >= length
     }
 }
@@ -87,5 +87,6 @@ public func mostWords(for phoneNumber: String) -> [String] {
 public func longestWords(for phoneNumber: String) -> [String] {
     listOfWords = readFromFile()
     let logestWord = listOfWords.reduce("") {$0.count > $1.count ? $0:$1}
-    return logestWord
+    let longestWordSize = longestWord.count
+    return wordsOfLength(longestWordSize)
 }
