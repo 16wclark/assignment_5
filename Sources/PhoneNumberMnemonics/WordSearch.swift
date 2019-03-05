@@ -72,7 +72,8 @@ public func wordsInString(_ string: String, ofMinLength length: UInt) -> [String
 // greater than or equal to ofMinLength characters
 public func possiblesWithWholeWords(ofMinLength length: UInt, for phoneNumber: String) -> [String] {
      return possibles(for: phoneNumber).filter {
-        return wordsInString(phoneNumber, ofMinLength: length).contains($0)
+        return wordsInString($0, ofMinLength: length).count > 0
+        
      }
            //maybe not done in progress
 }
@@ -81,9 +82,13 @@ public func possiblesWithWholeWords(ofMinLength length: UInt, for phoneNumber: S
 // within them (note that these words could be overlapping)
 // For instance, if there are two mnemonics that contain three words from
 // words.txt, it will return both of them, if the are no other mnemonics
-// that contain more than three words
+// that contain m.0
 public func mostWords(for phoneNumber: String) -> [String] {
-    // YOU FILL IN HERE
+    let temp = possiblesWithWholeWords(for: phoneNumber)
+    let temp2 = wordsInString(temp, 0).map({ $0.count })
+    let max =  temp2.max()
+    let final =
+        
 }
 
 // Returns the phone number mnemonics with the longest words from words.txt
