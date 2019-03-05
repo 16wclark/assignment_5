@@ -17,8 +17,8 @@ public func readFromFile() -> [String] {
     return lines
 }
 
-public func wordsOfLength(length: UInt) -> [String] {
+public func wordsOfLength(ofMinLength length: UInt) -> [String] {
     let text = readFromFile()
-    let words = text.filter { $0.count == length }
+    let words = text.filter { $0.count >= length }
     return words
 }
