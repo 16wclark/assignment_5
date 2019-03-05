@@ -47,8 +47,7 @@ public func letters(for phoneNumber: String) -> [[String]] {
 // For instance permuations(of: [["a", "b"], ["c"], ["d", "e"]]) will return
 // ["acd", "ace" "bcd", "bce"]
 public func permutations(of arrays: [[String]]) -> [String] {
-    let permutation = letters.reduce([""]) { (result, next) -> [String] in result.flatMap { currentLetter in next.map { currentLetter + $0 } }}
-    return permutation
+    return arrays.reduce([]) { (result, next) -> [String] in result.flatMap { currentLetter in next.map { currentLetter + $0 } }}
 }
 
 // Finds all of the possible strings of characters that a phone number
@@ -95,8 +94,11 @@ public func mostWords(for phoneNumber: String) -> [String] {
 // Returns the phone number mnemonics with the longest words from words.txt
 // If more than one word is tied for the longest, returns all of them
 public func longestWords(for phoneNumber: String) -> [String] {
-    let listOfWords = readFromFile()
-    let longestWord = listOfWords.reduce("") {$0.count > $1.count ? $0:$1}
-    let longestWordSize = longestWord.count
-    return wordsOfLength(longestWordSize)
+    let listOfPossibles = possiblesWithWholeWords(ofMinLength: 0, for: phoneNumber)
+    print("list of possibles:", listOfPossibles)
+    let longestWord = listOfPossibles.reduce("") {$0.count > $1.count ? $0:$1}
+    let listOfLongestWords = listOfPossibles.filter { $0.count == longestWord.count }
+    print("list of longest words:", listOfLongestWords)
+    return listOfLongestWords
+    //18006927753
 }
