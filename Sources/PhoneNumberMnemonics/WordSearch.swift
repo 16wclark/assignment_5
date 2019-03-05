@@ -47,7 +47,7 @@ public func letters(for phoneNumber: String) -> [[String]] {
 // For instance permuations(of: [["a", "b"], ["c"], ["d", "e"]]) will return
 // ["acd", "ace" "bcd", "bce"]
 public func permutations(of arrays: [[String]]) -> [String] {
-    return arrays.reduce([]) { (result, next) -> [String] in result.flatMap { currentLetter in next.map { currentLetter + $0 } }}
+    return arrays.reduce([""]) { (result, next) -> [String] in result.flatMap { currentLetter in next.map { currentLetter + $0 } }}
 }
 
 // Finds all of the possible strings of characters that a phone number
@@ -70,10 +70,10 @@ public func wordsInString(_ string: String, ofMinLength length: UInt) -> [String
 // can potentially represent that contain words in words.txt
 // greater than or equal to ofMinLength characters
 public func possiblesWithWholeWords(ofMinLength length: UInt, for phoneNumber: String) -> [String] {
-     return possibles(for: phoneNumber).filter {
+    return possibles(for: phoneNumber).filter {
         return wordsInString($0, ofMinLength: length).count > 0
         
-     }
+    }
            //maybe not done in progress
 }
 
@@ -84,11 +84,12 @@ public func possiblesWithWholeWords(ofMinLength length: UInt, for phoneNumber: S
 // that contain m.0
 public func mostWords(for phoneNumber: String) -> [String] {
     let temp = possiblesWithWholeWords( ofMinLength: 0, for: phoneNumber)
-    let temp2 = wordsInString(phoneNumber, ofMinLength: 0).map({ $0.count })
-    let max =  temp2.max()
+    let temp2 = wordsInString(phoneNumber, ofMinLength: 0)
+    let temp4 = temp2.map({ $0.count })
+    let max =  temp4.max()
     let temp3 = temp.filter { wordsInString($0, ofMinLength: 0).count == max }
+    print(wordsInString(phoneNumber, ofMinLength: 0)	)
     return temp3
-        
 }
 
 // Returns the phone number mnemonics with the longest words from words.txt
