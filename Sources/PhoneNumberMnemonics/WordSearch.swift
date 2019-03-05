@@ -33,6 +33,8 @@ public func letters(for phoneNumber: String) -> [[String]] {
                 return ["T", "U", "V"]
             case "9":
                 return ["W", "X", "Y", "Z"]
+            default:
+                return ["0"]
             }
         }
 }
@@ -52,8 +54,8 @@ public func permutations(of arrays: [[String]]) -> [String] {
 // can potentially represent
 // Uses letters(for:) and permutations(of:) to do this
 public func possibles(for phoneNumber: String) -> [String] {
-    let listOfLetters = letters(for: phoneNumber)
-    return premutations(of: listOfLetters)
+     let listOfLetters = letters(for: phoneNumber)
+    return permutations(of: listOfLetters)
 }
 
 // Returns all of the words in a given *string* from the wordlist.txt file
@@ -69,7 +71,7 @@ public func wordsInString(_ string: String, ofMinLength length: UInt) -> [String
 // greater than or equal to ofMinLength characters
 public func possiblesWithWholeWords(ofMinLength length: UInt, for phoneNumber: String) -> [String] {
      return possibles(for: phoneNumber).filter {
-            return wordsInString(for: phoneNumber, ofMinLength).contains($0)
+        return wordsInString(phoneNumber, ofMinLength: length).contains($0)
      }
            //maybe not done in progress
 }
