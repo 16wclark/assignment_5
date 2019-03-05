@@ -84,10 +84,11 @@ public func possiblesWithWholeWords(ofMinLength length: UInt, for phoneNumber: S
 // words.txt, it will return both of them, if the are no other mnemonics
 // that contain m.0
 public func mostWords(for phoneNumber: String) -> [String] {
-    let temp = possiblesWithWholeWords(for: phoneNumber)
-    let temp2 = wordsInString(temp, 0).map({ $0.count })
+    let temp = possiblesWithWholeWords( ofMinLength: 0, for: phoneNumber)
+    let temp2 = wordsInString(phoneNumber, ofMinLength: 0).map({ $0.count })
     let max =  temp2.max()
-    let final =
+    let temp3 = temp.filter { wordsInString($0, ofMinLength: 0).count == max }
+    return temp3
         
 }
 
