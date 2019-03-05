@@ -87,7 +87,7 @@ public func mostWords(for phoneNumber: String) -> [String] {
 // If more than one word is tied for the longest, returns all of them
 public func longestWords(for phoneNumber: String) -> [String] {
     listOfWords = readFromFile()
-    let logestWord = listOfWords.reduce("") {$0.count > $1.count ? $0:$1}
+    let longestWord = listOfWords.reduce("") {$0.count > $1.count ? $0:$1}
     let longestWordSize = longestWord.count
     return wordsOfLength(longestWordSize)
 }
