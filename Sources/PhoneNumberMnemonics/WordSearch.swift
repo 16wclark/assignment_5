@@ -52,13 +52,14 @@ public func permutations(of arrays: [[String]]) -> [String] {
 // can potentially represent
 // Uses letters(for:) and permutations(of:) to do this
 public func possibles(for phoneNumber: String) -> [String] {
-   return permutations(of letters(for phoneNumber)) 
+    listOfLetters = letters(for: phoneNumber)
+    return premutations(of: listOfLetters)
 }
 
 // Returns all of the words in a given *string* from the wordlist.txt file
 // using only words in the word list of minimum length ofMinLength
 public func wordsInString(_ string: String, ofMinLength length: UInt) -> [String] {
-    return readFromFile("words.txt").filter {   
+    return readFromFile().filter {   
            return string.contains($0) && $0.count >= length
     }
 }
@@ -67,7 +68,7 @@ public func wordsInString(_ string: String, ofMinLength length: UInt) -> [String
 // can potentially represent that contain words in words.txt
 // greater than or equal to ofMinLength characters
 public func possiblesWithWholeWords(ofMinLength length: UInt, for phoneNumber: String) -> [String] {
-    return readFromFile("words.txt").filter {
+    return readFromFile().filter {
            return phoneNumber.contains($0) && $0.count >= length
            // not done in progress
 }
@@ -84,5 +85,7 @@ public func mostWords(for phoneNumber: String) -> [String] {
 // Returns the phone number mnemonics with the longest words from words.txt
 // If more than one word is tied for the longest, returns all of them
 public func longestWords(for phoneNumber: String) -> [String] {
-    // YOU FILL IN HERE
+    listOfWords = readFromFile()
+    let logestWord = listOfWords.reduce("") {$0.count > $1.count ? $0:$1}
+    return logestWord
 }
