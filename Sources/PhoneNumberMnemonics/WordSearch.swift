@@ -100,6 +100,7 @@ public func longestWords(for phoneNumber: String) -> [String] {
     let longestWord = listOfPossibles.reduce("") {$0.count > $1.count ? $0:$1}
     let listOfLongestWords = listOfPossibles.filter { $0.count == longestWord.count }
     print("list of longest words:", listOfLongestWords)
-    return listOfLongestWords
+    let temp = wordsOfLength(ofMinLength: longestWord.count)
+    return listOfLongestWords.filter {temp.contains($0)}
     //18006927753
 }
