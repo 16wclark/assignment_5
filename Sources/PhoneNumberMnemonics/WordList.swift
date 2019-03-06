@@ -18,7 +18,7 @@ public func readFromFile() -> [String] {
     return capLines
 }
 
-public func wordsOfLength(ofMinLength length: UInt) -> [String] {
+public func wordsOfLength(ofMinLength length: Int) -> [String] {
     let text = readFromFile()
     let words = text.filter { $0.count >= length }
     return words
