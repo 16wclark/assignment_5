@@ -83,24 +83,17 @@ public func possiblesWithWholeWords(ofMinLength length: UInt, for phoneNumber: S
 // words.txt, it will return both of them, if the are no other mnemonics
 // that contain m.0
 public func mostWords(for phoneNumber: String) -> [String] {
-    let temp = possiblesWithWholeWords( ofMinLength: 0, for: phoneNumber)
-    let temp2 = wordsInString(phoneNumber, ofMinLength: 0)
-    let temp4 = temp2.map({ $0.count })
-    let max =  temp4.max()
-    let temp3 = temp.filter { wordsInString($0, ofMinLength: 0).count == max }
-    print(wordsInString(phoneNumber, ofMinLength: 0)	)
-    return temp3
+    let allPossibles = possiblesWithWholeWords(ofMinLength: 0, for: phoneNumber)
+    let countWords = allPossibles.map { wordsInString($0, ofMinLength: 0).count }.max()
+    return allPossibles.filter { wordsInString($0, ofMinLength: 0).count == countWords }
 }
 
 // Returns the phone number mnemonics with the longest words from words.txt
 // If more than one word is tied for the longest, returns all of them
 public func longestWords(for phoneNumber: String) -> [String] {
     let listOfPossibles = possiblesWithWholeWords(ofMinLength: 0, for: phoneNumber)
-    print("list of possibles:", listOfPossibles)
     let longestWord = listOfPossibles.reduce("") {$0.count > $1.count ? $0:$1}
     let listOfLongestWords = listOfPossibles.filter { $0.count == longestWord.count }
-    print("list of longest words:", listOfLongestWords)
     let temp = wordsOfLength(ofMinLength: longestWord.count)
     return listOfLongestWords.filter {temp.contains($0)}
-    //18006927753
 }
