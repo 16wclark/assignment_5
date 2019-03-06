@@ -14,7 +14,8 @@ public func readFromFile() -> [String] {
     } catch _ {
         print("error")
     }
-    return lines
+    let capLines = lines.map { $0.uppercased() }
+    return capLines
 }
 
 public func wordsOfLength(ofMinLength length: UInt) -> [String] {
